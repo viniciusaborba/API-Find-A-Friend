@@ -1,18 +1,18 @@
 import { Org } from "@prisma/client";
-import { OrgsRepository } from "../repositories/orgs-repository";
+import { OrgsRepository } from "../../repositories/orgs-repository";
 import { hash } from "bcryptjs";
 
 interface RegisterUseCaseRequest {
-  name: string
-  city:  string
-  email:  string 
-  postalCode: string
-  password: string
-  phone: string
+  name: string;
+  city: string;
+  email: string;
+  postalCode: string;
+  password: string;
+  phone: string;
 }
 
 interface RegisterUseCaseResponse {
-  org: Org
+  org: Org;
 }
 
 export class RegisterUseCase {
@@ -24,9 +24,9 @@ export class RegisterUseCase {
     city,
     postalCode,
     password,
-    phone
+    phone,
   }: RegisterUseCaseRequest): Promise<RegisterUseCaseResponse> {
-    const password_hash = await hash(password, 6)
+    const password_hash = await hash(password, 6);
 
     const org = await this.orgsRepository.create({
       name,
@@ -35,10 +35,10 @@ export class RegisterUseCase {
       phone,
       postal_code: postalCode,
       password_hash,
-    })
+    });
 
     return {
       org,
-    }
+    };
   }
 }
