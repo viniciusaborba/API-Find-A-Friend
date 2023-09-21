@@ -1,5 +1,6 @@
 import { Org } from "@prisma/client";
 import { OrgsRepository } from "../../repositories/orgs-repository";
+import { ResourceNotFoundError } from "../errors/resource-not-found-error";
 
 interface GetOrgProfileUseCaseRequest {
   orgId: string

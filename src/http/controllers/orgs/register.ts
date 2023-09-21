@@ -6,7 +6,7 @@ import { OrgAlreadyExistsError } from "../../../use-cases/errors/org-already-exi
 export async function register(req: FastifyRequest, res: FastifyReply) {
   const registerBodySchema = z.object({
     name: z.string(),
-    email: z.string().email(),
+    email: z.string(),
     password: z.string().min(6).max(20),
     phone: z.coerce.string().min(11).max(11),
     postalCode: z.string().regex(/^\d{5}-?\d{3}$/),
