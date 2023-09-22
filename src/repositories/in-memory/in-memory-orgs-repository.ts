@@ -1,9 +1,17 @@
-import { Org, Prisma } from "@prisma/client";
+import { $Enums, Org, Prisma } from "@prisma/client";
 import { OrgsRepository } from "../orgs-repository";
 import { randomUUID } from "crypto";
 
 export class InMemoryOrgsRepository implements OrgsRepository {
-    public items: Org[] = []
+  public items: Org[] = []
+    
+    async findManyByCity(postalCode: string) {
+      const q = postalCode.slice(0, 5).trim()
+
+      return this.items.filter((item) => 
+        item.postal_code.includes(q) ? item.id : null
+      )
+    }
     
     async findById(id: string) {
       const org = this.items.find((item) => item.id === id)

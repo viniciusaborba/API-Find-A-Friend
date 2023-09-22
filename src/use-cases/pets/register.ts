@@ -1,6 +1,7 @@
 import { Pet } from "@prisma/client";
 import { OrgsRepository } from "../../repositories/orgs-repository";
 import { PetsRepository } from "../../repositories/pets-repository";
+import { ResourceNotFoundError } from "../errors/resource-not-found-error";
 
 interface RegisterPetUseCaseRequest {
   orgId: string
