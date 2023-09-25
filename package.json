@@ -9,7 +9,8 @@
     "migrate": "prisma migrate dev",
     "studio": "prisma studio",
     "test": "vitest run --dir src/use-cases/tests",
-    "test:ui": "vitest --ui"
+    "test:ui": "vitest --ui",
+    "test:e2e": "vitest run"
   },
   "keywords": [],
   "author": "",
@@ -25,7 +26,7 @@
     "tsx": "^3.12.8",
     "typescript": "^5.2.2",
     "vite-tsconfig-paths": "4.2.1",
-    "vitest": "0.34.5"
+    "vitest": "0.33.0"
   },
   "dependencies": {
     "@fastify/cookie": "9.0.4",
