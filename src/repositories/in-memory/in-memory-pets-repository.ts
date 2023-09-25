@@ -1,9 +1,20 @@
 import { Pet, Prisma } from "@prisma/client";
 import { PetsRepository } from "../pets-repository";
 import { randomUUID } from "crypto";
+import { prisma } from "../../lib/prisma";
 
 export class InMemoryPetsRepository implements PetsRepository {
   public items: Pet[] = []
+  
+  async findPetById(id: string) {
+    const pet = this.items.find((item) => item.id === id)
+
+    if (!pet) {
+      return null
+    }
+
+    return pet
+  }
   
   async findManyByCity(q: string, page: number) {
     const postalCode = q.slice(0, 5)
